@@ -17,5 +17,10 @@ frontend/dist/
 .DS_Store
 Thumbs.db
 
-# Env secrets
+# Secrets — never commit these
 .env
+*.env
+application-local.properties
+
+# Keep application.properties tracked but remind devs:
+# Set OPENWEATHER_API_KEY as environment variable, never hardcode it

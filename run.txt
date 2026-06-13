@@ -1,0 +1,1 @@
+cmd /c "cd /d C:\Users\navee\Desktop\FramSync-Project\backend && mvn spring-boot:run -Dspring-boot.run.profiles=h2"

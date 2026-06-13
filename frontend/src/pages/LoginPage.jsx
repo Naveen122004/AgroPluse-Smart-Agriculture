@@ -28,7 +28,8 @@ export default function LoginPage() {
       showToast('Welcome back!');
       navigate('/dashboard');
     } catch (err) {
-      showToast(err.response?.data?.message || 'Login failed', 'error');
+      const message = err.response?.data?.message || err.response?.data?.error || 'Login failed';
+      showToast(message, 'error');
     } finally {
       setLoading(false);
     }

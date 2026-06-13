@@ -123,48 +123,6 @@ public class DataSeeder implements CommandLineRunner {
                 "HIGH"));
     }
 
-    private void seedGovernmentSchemes() {
-        if (governmentSchemeRepository.count() > 0) {
-            return;
-        }
-        log.info("Seeding government schemes...");
-        governmentSchemeRepository.save(createScheme(
-                "PM-KISAN",
-                "Income support scheme providing financial assistance to eligible farmer families.",
-                "Small and marginal farmer families with cultivable land as per state records.",
-                "₹6,000 per year in three equal installments directly to bank accounts.",
-                "Apply through PM-KISAN portal or visit nearest agriculture office with land records.",
-                "https://pmkisan.gov.in/",
-                LocalDate.now().plusMonths(3),
-                "All India"));
-        governmentSchemeRepository.save(createScheme(
-                "Kisan Credit Card (KCC)",
-                "Provides farmers timely credit for crop production and allied activities.",
-                "Farmers engaged in agriculture, fisheries, or animal husbandry.",
-                "Flexible credit limit with subsidized interest for crop loans.",
-                "Apply through participating banks with land documents and identity proof.",
-                "https://www.india.gov.in/kisan-credit-card-kcc",
-                null,
-                "All India"));
-        governmentSchemeRepository.save(createScheme(
-                "Soil Health Card Scheme",
-                "Promotes balanced use of fertilizers based on soil test results.",
-                "All farmers owning or cultivating agricultural land.",
-                "Free soil testing and customized fertilizer recommendations every 2 years.",
-                "Contact local agriculture department or soil testing laboratory.",
-                "https://soilhealth.dac.gov.in/",
-                null,
-                "All India"));
-        governmentSchemeRepository.save(createScheme(
-                "Uttar Pradesh Crop Loan Waiver",
-                "State scheme for relief on outstanding crop loans for eligible farmers.",
-                "Small and marginal farmers with outstanding crop loans in UP cooperative banks.",
-                "Partial or full waiver based on eligibility criteria defined by state government.",
-                "Submit application through district agriculture office with loan and land documents.",
-                "https://up.gov.in/",
-                LocalDate.now().plusMonths(6),
-                "Uttar Pradesh"));
-    }
 
     private MarketPrice createPrice(String crop, String market, String state, String district,
                                     int min, int max, int avg) {
@@ -205,19 +163,4 @@ public class DataSeeder implements CommandLineRunner {
         return alert;
     }
 
-    private GovernmentScheme createScheme(String name, String description, String eligibility,
-                                          String benefits, String process, String link,
-                                          LocalDate lastDate, String state) {
-        GovernmentScheme scheme = new GovernmentScheme();
-        scheme.setSchemeName(name);
-        scheme.setDescription(description);
-        scheme.setEligibility(eligibility);
-        scheme.setBenefits(benefits);
-        scheme.setApplicationProcess(process);
-        scheme.setOfficialLink(link);
-        scheme.setLastDate(lastDate);
-        scheme.setState(state);
-        scheme.setActive(true);
-        return scheme;
-    }
 }

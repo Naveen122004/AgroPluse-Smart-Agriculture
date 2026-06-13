@@ -50,8 +50,10 @@ export default function LandingPage() {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
+  // DEMO MODE ENABLED — navigate directly to feature routes without login check
   const handleFeatureClick = (route) => {
-    navigate(isAuthenticated ? route : '/login');
+    navigate(route);
+    // Original: navigate(isAuthenticated ? route : '/login');
   };
 
   const handleContact = async (e) => {
@@ -86,7 +88,7 @@ export default function LandingPage() {
                 Weather forecasts, mandi prices, irrigation scheduling, crop care, disease alerts and government schemes — everything a modern farmer needs in one dashboard.
               </p>
               <div className="d-flex gap-3 flex-wrap">
-                <Link to="/signup" className="btn btn-primary-custom btn-lg px-4">Get Started Free</Link>
+                <Link to="/dashboard" className="btn btn-primary-custom btn-lg px-4">Get Started Free</Link>
                 <a href="#features" className="btn btn-outline-success btn-lg px-4">See Features</a>
               </div>
             </div>
@@ -206,7 +208,8 @@ export default function LandingPage() {
                   <h5 style={{ fontWeight: 700, marginBottom: '0.5rem' }}>{f.title}</h5>
                   <p className="text-muted-custom mb-2" style={{ fontSize: '0.9rem', lineHeight: 1.7 }}>{f.desc}</p>
                   <span style={{ fontSize: '0.82rem', color: 'var(--primary)', fontWeight: 600 }}>
-                    {isAuthenticated ? 'Open module →' : 'Login to access →'}
+                    {/* DEMO MODE ENABLED — always show 'Open module', original: isAuthenticated ? 'Open module →' : 'Login to access →' */}
+                    Open module →
                   </span>
                 </div>
               </div>

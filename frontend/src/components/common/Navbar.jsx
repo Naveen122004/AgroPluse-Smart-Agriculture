@@ -33,7 +33,8 @@ export default function Navbar({ authenticated = false }) {
               </li>
               <li className="nav-item"><Link className="nav-link" to="/login">Login</Link></li>
               <li className="nav-item">
-                <Link className="btn btn-primary-custom btn-sm" to="/signup">Get Started</Link>
+                {/* DEMO MODE ENABLED — Go to Dashboard directly. Original: to="/signup" */}
+                <Link className="btn btn-primary-custom btn-sm" to="/dashboard">Get Started</Link>
               </li>
             </ul>
           </div>

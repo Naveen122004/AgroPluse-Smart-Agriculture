@@ -3,6 +3,17 @@ import { authService } from '../services/authService';
 
 const AuthContext = createContext(null);
 
+// DEMO MODE ENABLED — remove DEMO_USER and set DEMO_MODE = false to restore auth
+const DEMO_MODE = true;
+const DEMO_USER = {
+  id: 0,
+  fullName: 'Demo Farmer',
+  email: 'demo@agropulse.com',
+  state: 'Maharashtra',
+  district: 'Pune',
+  preferredCrop: 'Wheat',
+};
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
@@ -14,6 +25,10 @@ export function AuthProvider({ children }) {
     if (savedToken && savedUser) {
       setToken(savedToken);
       setUser(JSON.parse(savedUser));
+    } else if (DEMO_MODE) {
+      // DEMO MODE ENABLED — auto-load demo user without login
+      setUser(DEMO_USER);
+      setToken('demo-token');
     }
     setLoading(false);
   }, []);
